@@ -18,7 +18,7 @@ date_yes = str(int(yesterday.strftime("%d")))       # same thing for date
 year = yesterday.strftime("%y")                     #extracts year
 date_fixed = f'{month_yes}/{date_yes}/{year}'       #creates new, formated date, ex. from 09/04/21 to 9/4/21
  
- #imports csv doc from url.
+ #imports csv doc from url
 url = "https://data.humdata.org/hxlproxy/api/data-preview.csv?url=https%3A%2F%2Fraw.githubusercontent.com%2FCSSEGISandData%2FCOVID-19%2Fmaster%2Fcsse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_covid19_deaths_global.csv&filename=time_series_covid19_deaths_global.csv"
 s = requests.get(url).content
 #creates new dataframe with only three columns
