@@ -1,1 +1,1 @@
-web: gunicorn flask_app:covid_19_app
+web: gunicorn app:app
