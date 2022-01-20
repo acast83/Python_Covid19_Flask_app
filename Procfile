@@ -1,0 +1,1 @@
+web: gunicorn flask_app:covid_19_app
