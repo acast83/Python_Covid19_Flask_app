@@ -11,13 +11,21 @@ import datetime
 fg = folium.FeatureGroup(name='Markers')        #creates Feature Group called Markers. This is a layer that can be switched of if necessary
 pd.set_option('display.max_rows', 1000)         #not necessary, used to print whole column while testing
  
-today = datetime.datetime.now()                     #get today date
-yesterday = today - datetime.timedelta(days=1)      #get yesterday date
-month_yes = str(int(yesterday.strftime("%m")))      # extracts month, transforms it into int and back to string. from 09 to 9 for september. Csv doc didn't have zeros in it's columns so I had to do that
-date_yes = str(int(yesterday.strftime("%d")))       # same thing for date
-year = yesterday.strftime("%y")                     #extracts year
-date_fixed = f'{month_yes}/{date_yes}/{year}'       #creates new, formated date, ex. from 09/04/21 to 9/4/21
- 
+try:
+    today = datetime.datetime.now()                     #get today date
+    yesterday = today - datetime.timedelta(days=1)      #get yesterday date
+    month_yes = str(int(yesterday.strftime("%m")))      # extracts month, transforms it into int and back to string. from 09 to 9 for september. Csv doc didn't have zeros in it's columns so I had to do that
+    date_yes = str(int(yesterday.strftime("%d")))       # same thing for date
+    year = yesterday.strftime("%y")                     #extracts year
+    date_fixed = f'{month_yes}/{date_yes}/{year}'       #creates new, formated date, ex. from 09/04/21 to 9/4/21
+except:
+    today = datetime.datetime.now()                     #get today date
+    yesterday = today - datetime.timedelta(days=2)      #get day before yesterday date
+    month_yes = str(int(yesterday.strftime("%m")))      # extracts month, transforms it into int and back to string. from 09 to 9 for september. Csv doc didn't have zeros in it's columns so I had to do that
+    date_yes = str(int(yesterday.strftime("%d")))       # same thing for date
+    year = yesterday.strftime("%y")                     #extracts year
+    date_fixed = f'{month_yes}/{date_yes}/{year}'
+    
  #imports csv doc from url
 url = "https://data.humdata.org/hxlproxy/api/data-preview.csv?url=https%3A%2F%2Fraw.githubusercontent.com%2FCSSEGISandData%2FCOVID-19%2Fmaster%2Fcsse_covid_19_data%2Fcsse_covid_19_time_series%2Ftime_series_covid19_deaths_global.csv&filename=time_series_covid19_deaths_global.csv"
 s = requests.get(url).content
