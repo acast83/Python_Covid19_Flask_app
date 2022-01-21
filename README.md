@@ -1,6 +1,7 @@
 # Python_Covid19_Flask_app
 This app written in Python using Flask framework creates an interactive web map with markers showing Covid19 current status for each country.
-You can check out my app on Heroku
+You can check out my app on Heroku, it takes some time to start the app so please be patient.
+
 https://covid-19-flask-map.herokuapp.com/
 
 ### If you hover over a country, name of that country is displayed
